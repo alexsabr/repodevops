@@ -25,7 +25,7 @@ jobs:
         working-directory: backend2
         run:  mvn clean verify
 
-jobs: build-push-docker
+build-push-docker:
   needs: test-backend
 
  runs-on: ubuntu-22.04
