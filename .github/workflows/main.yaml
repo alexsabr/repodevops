@@ -27,8 +27,7 @@ jobs:
 
 build-push-docker:
   needs: test-backend
-
- runs-on: ubuntu-22.04
+  runs-on: ubuntu-22.04
 
  # steps to perform in job
   steps:
