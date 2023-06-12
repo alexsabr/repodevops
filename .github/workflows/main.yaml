@@ -43,14 +43,14 @@ build-push-docker:
        tags:  ${{secrets.DOCKERHUB_USERNAME}}/alexandre/mybackend
 
    - name: Build image and push database
-       context: ./db
+    context: ./db
        # Note: tags has to be all lower-case
-       tags:  ${{secrets.DOCKERHUB_USERNAME}}/alexandre/mypostgres
+   tags:  ${{secrets.DOCKERHUB_USERNAME}}/alexandre/mypostgres
 
    - name: Build image and push httpd
-       context: ./http_server
+    context: ./http_server
        # Note: tags has to be all lower-case
-       tags:  ${{secrets.DOCKERHUB_USERNAME}}/alexandre/myapache2
+    tags:  ${{secrets.DOCKERHUB_USERNAME}}/alexandre/myapache2
 
 - name: Login to DockerHub
   run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
