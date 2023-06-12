@@ -46,7 +46,9 @@ jobs:
         tags:  ${{secrets.DOCKERHUB_USERNAME}}/alexandre:mybackend
         # build on feature branches, push only on main branch
         push: ${{ github.ref == 'refs/heads/master' }}
-
+    
+    - name: Build image and push postgres
+      uses: docker/build-push-action@v3  
       with:
         # relative path to the place where source code with Dockerfile is located
         context: ./db
@@ -54,7 +56,9 @@ jobs:
         tags:  ${{secrets.DOCKERHUB_USERNAME}}/alexandre:mypostgres
         # build on feature branches, push only on main branch
         push: ${{ github.ref == 'refs/heads/master' }}
-
+    
+    - name: Build image and push apache
+      uses: docker/build-push-action@v3  
       with:
         # relative path to the place where source code with Dockerfile is located
         context: ./http_server
