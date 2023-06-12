@@ -20,5 +20,6 @@ jobs:
       - name: Set up JDK 17
      #finally build your app with the latest command
       - name: Build and test with Maven
+        working-directory: backend2
         run:  mvn clean verify
-          working-directory: backend2
+          
