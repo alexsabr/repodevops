@@ -12,14 +12,15 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2.5.0
+
+      - name: Set up JDK 17
       - uses: actions/setup-java@v3
         with:
         distribution: 'corretto'
         java-version: '17'
         cache: 'maven'
-      - name: Set up JDK 17
+
      #finally build your app with the latest command
       - name: Build and test with Maven
         working-directory: backend2
         run:  mvn clean verify
-          
