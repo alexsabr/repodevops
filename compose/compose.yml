@@ -1,0 +1,42 @@
+version: '3.7'
+
+services:
+    backend:
+      container_name: small_backend
+      image: alexandre/mybackend
+      build:
+        context: ../backend2
+      networks:
+      - app-network
+      depends_on:
+      -  database
+
+
+    database:
+        container_name: webpsql
+        image: alexandre/mypostgres
+        build:
+          context: ../db
+        networks:
+        -  app-network
+        environment:
+          POSTGRES_PASSWORD: pwd
+          POSTGRES_DB: db 
+          POSTGRES_USER: usr
+        volumes:
+        - ./dbdata:/var/lib/postgresql/data
+
+    httpd:
+      image: alexandre/myapache2
+      container_name: apache2-server
+      build:
+        context: ../http_server
+      ports:
+      -  80:80
+      networks:
+      - app-network
+      depends_on:
+      -  backend
+
+networks:  
+  app-network:
