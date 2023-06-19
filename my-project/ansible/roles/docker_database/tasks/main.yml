@@ -1,0 +1,16 @@
+---
+# tasks file for roles/docker_database
+
+- name: Run Database
+  docker_container:
+    name: webpsql
+    env:
+      POSTGRES_PASSWORD: "pwd"
+      POSTGRES_DB: "db"
+      POSTGRES_USER: "usr"
+    image: alexsabri/alexandre:mypostgres
+    networks:
+      - name: app-network
+    ports:
+     - "15432:5432"
+

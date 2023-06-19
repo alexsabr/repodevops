@@ -1,0 +1,9 @@
+---
+# tasks file for roles/docker_app
+- name: Run backend
+  docker_container:
+    name: small_backend
+    image: alexsabri/alexandre:mybackend
+    networks:
+      - name: app-network
+    

@@ -1,0 +1,10 @@
+- hosts: all
+  gather_facts: false
+  become: yes
+  roles: 
+    - docker
+    - docker_network
+    - docker_database
+    - docker_app
+    - docker_proxy
+
