@@ -25,8 +25,7 @@ jobs:
      #finally build your app with the latest command
       - name: Build and test with Maven
         working-directory: backend2
-        run:  mvn -B verify sonar:sonar -Dsonar.projectKey=devops-2023 -Dsonar.organization=devops-school -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}  --file ./backend2/pom.xml
-
+        run:  mvn clean verify
 
   build-push-docker:
     needs: test-backend
