@@ -1,12 +1,14 @@
 name: CI devops 2023
 on:
   #to begin you want to launch this job in main and develop
+# On what action you require that the job is ran
   push:
     branches:
       - master
       - develop
   pull_request:
 
+#job list 
 jobs:
   test-backend:
     runs-on: ubuntu-22.04
@@ -23,7 +25,8 @@ jobs:
      #finally build your app with the latest command
       - name: Build and test with Maven
         working-directory: backend2
-        run:  mvn clean verify
+        run:  mvn -B verify sonar:sonar -Dsonar.projectKey=devops-2023 -Dsonar.organization=devops-school -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}  --file ./backend2/pom.xml
+
 
   build-push-docker:
     needs: test-backend
